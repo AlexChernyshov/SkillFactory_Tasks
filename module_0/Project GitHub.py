@@ -2,21 +2,21 @@ import numpy as np
 
 
 def game_core_v3(number):
-    """Берем любое random число, затем сокращаем диапазон, содержащий верный ответ,
+    """Берем за первый вариант ответ 50, затем сокращаем диапазон, содержащий верный ответ,
     путем смещения крайних возможных вариантов и берем среднее целое между ними.
     Функция принимает загаданное число и возвращает число попыток"""
     count = 1
-    predict = np.random.randint(1, 101)
+    predict = 50
     low_point = 1  # минимальный возможный вариант ответа
     high_point = 100  # максимальный возможный вариант ответа
     while number != predict:
         count += 1
         if number > predict:
             low_point = predict + 1
-            predict = (low_point + high_point) // 2
+            predict = (low_point + high_point)//2
         elif number < predict:
             high_point = predict - 1
-            predict = (low_point + high_point) // 2
+            predict = (low_point + high_point)//2
     return count  # выход из цикла, если угадали
 
 
